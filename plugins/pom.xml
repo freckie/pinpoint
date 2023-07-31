@@ -54,6 +54,7 @@
         <module>dbcp2</module>
         <module>hikaricp</module>
         <module>oracle-jdbc</module>
+        <module>tibero-jdbc</module>
         <module>jdk-http</module>
         <module>json-lib</module>
         <module>redis</module>
