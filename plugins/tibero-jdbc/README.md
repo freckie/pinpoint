@@ -22,6 +22,6 @@ profiler.jdbc.tibero.rollback=false
 # Trace bindvalues for Tibero PreparedStatements (overrides profiler.jdbc.tracesqlbindvalue)
 profiler.jdbc.tibero.tracesqlbindvalue=false
 
-# Disallow profiling of {createStatement, prepareStatement, prepareCall}.
-profiler.jdbc.tibero.disallow3methods=true
+# Allow profiling of execute|executeQuery|executeUpdate only.
+profiler.jdbc.tibero.executeonly=false
 ~~~
