@@ -103,45 +103,47 @@ public class TiberoPlugin implements ProfilerPlugin, TransformTemplateAware {
 
             TiberoConfig config = new TiberoConfig(instrumentor.getProfilerConfig());
 
-            // close
-            InstrumentUtils.findMethod(target, "close")
-                    .addScopedInterceptor(ConnectionCloseInterceptor.class, TIBERO_SCOPE);
+            if (!config.isProfileDisallow3Methods()) {
+                // close
+                InstrumentUtils.findMethod(target, "close")
+                        .addScopedInterceptor(ConnectionCloseInterceptor.class, TIBERO_SCOPE);
 
-            // createStatement
-            final Class<? extends Interceptor> statementCreate = StatementCreateInterceptor.class;
-            InstrumentUtils.findMethod(target, "createStatement")
-                    .addScopedInterceptor(statementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "createStatement", "int", "int")
-                    .addScopedInterceptor(statementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "createStatement", "int", "int", "int")
-                    .addScopedInterceptor(statementCreate, TIBERO_SCOPE);
+                // createStatement
+                final Class<? extends Interceptor> statementCreate = StatementCreateInterceptor.class;
+                InstrumentUtils.findMethod(target, "createStatement")
+                        .addScopedInterceptor(statementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "createStatement", "int", "int")
+                        .addScopedInterceptor(statementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "createStatement", "int", "int", "int")
+                        .addScopedInterceptor(statementCreate, TIBERO_SCOPE);
 
-            // prepareStatement
-            final Class<? extends Interceptor> preparedStatementCreate = PreparedStatementCreateInterceptor.class;
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "boolean")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "int")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "int", "int")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "int", "int", "boolean")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "int", "int", "int")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "int[]")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareStatement",  "java.lang.String", "java.lang.String[]")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                // prepareStatement
+                final Class<? extends Interceptor> preparedStatementCreate = PreparedStatementCreateInterceptor.class;
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "boolean")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "int")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "int", "int")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "int", "int", "boolean")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "int", "int", "int")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "int[]")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareStatement", "java.lang.String", "java.lang.String[]")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
 
-            // prepareCall
-            InstrumentUtils.findMethod(target, "prepareCall",  "java.lang.String")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareCall",  "java.lang.String", "int", "int")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
-            InstrumentUtils.findMethod(target, "prepareCall",  "java.lang.String", "int", "int", "int")
-                    .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                // prepareCall
+                InstrumentUtils.findMethod(target, "prepareCall", "java.lang.String")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareCall", "java.lang.String", "int", "int")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+                InstrumentUtils.findMethod(target, "prepareCall", "java.lang.String", "int", "int", "int")
+                        .addScopedInterceptor(preparedStatementCreate, TIBERO_SCOPE);
+            }
 
             if (config.isProfileSetAutoCommit()) {
                 InstrumentUtils.findMethod(target, "setAutoCommit",  "boolean")

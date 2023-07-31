@@ -24,7 +24,7 @@ public class TiberoConfig extends JdbcConfig {
     private final boolean profileSetAutoCommit;
     private final boolean profileCommit;
     private final boolean profileRollback;
-    private final boolean profileExecuteOnly;
+    private final boolean profileDisallow3Methods;
 
     public TiberoConfig(ProfilerConfig config) {
         super(config.readBoolean("profiler.jdbc.tibero", false),
@@ -33,7 +33,7 @@ public class TiberoConfig extends JdbcConfig {
         this.profileSetAutoCommit = config.readBoolean("profiler.jdbc.tibero.setautocommit", false);
         this.profileCommit = config.readBoolean("profiler.jdbc.tibero.commit", false);
         this.profileRollback = config.readBoolean("profiler.jdbc.tibero.rollback", false);
-        this.profileExecuteOnly = config.readBoolean("profiler.jdbc.tibero.executeonly", false);
+        this.profileDisallow3Methods = config.readBoolean("profiler.jdbc.tibero.disallow3methods", false);
     }
 
     public boolean isProfileSetAutoCommit() {
@@ -48,8 +48,8 @@ public class TiberoConfig extends JdbcConfig {
         return profileRollback;
     }
 
-    public boolean isProfileExecuteOnly() {
-        return profileExecuteOnly;
+    public boolean isProfileDisallow3Methods() {
+        return profileDisallow3Methods;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class TiberoConfig extends JdbcConfig {
                 ", profileSetAutoCommit=" + profileSetAutoCommit +
                 ", profileCommit=" + profileCommit +
                 ", profileRollback=" + profileRollback +
-                ", profileExecuteOnly=" + profileExecuteOnly +
+                ", profileDisallow3Methods=" + profileDisallow3Methods +
                 "]";
     }
 }
