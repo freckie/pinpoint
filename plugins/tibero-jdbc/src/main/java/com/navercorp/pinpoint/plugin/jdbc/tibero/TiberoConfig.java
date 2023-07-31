@@ -24,7 +24,6 @@ public class TiberoConfig extends JdbcConfig {
     private final boolean profileSetAutoCommit;
     private final boolean profileCommit;
     private final boolean profileRollback;
-    private final boolean profileExecuteOnly;
 
     public TiberoConfig(ProfilerConfig config) {
         super(config.readBoolean("profiler.jdbc.tibero", false),
@@ -33,7 +32,6 @@ public class TiberoConfig extends JdbcConfig {
         this.profileSetAutoCommit = config.readBoolean("profiler.jdbc.tibero.setautocommit", false);
         this.profileCommit = config.readBoolean("profiler.jdbc.tibero.commit", false);
         this.profileRollback = config.readBoolean("profiler.jdbc.tibero.rollback", false);
-        this.profileExecuteOnly = config.readBoolean("profiler.jdbc.tibero.executeonly", false);
     }
 
     public boolean isProfileSetAutoCommit() {
@@ -48,17 +46,8 @@ public class TiberoConfig extends JdbcConfig {
         return profileRollback;
     }
 
-    public boolean isProfileExecuteOnly() {
-        return profileExecuteOnly;
-    }
-
     @Override
     public String toString() {
-        return "TiberoConfig [" + super.toString() +
-                ", profileSetAutoCommit=" + profileSetAutoCommit +
-                ", profileCommit=" + profileCommit +
-                ", profileRollback=" + profileRollback +
-                ", profileExecuteOnly=" + profileExecuteOnly +
-                "]";
+        return "TiberoConfig [" + super.toString() + ", profileSetAutoCommit=" + profileSetAutoCommit + ", profileCommit=" + profileCommit + ", profileRollback=" + profileRollback + "]";
     }
 }
