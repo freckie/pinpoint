@@ -125,6 +125,8 @@ import static com.navercorp.pinpoint.common.trace.ServiceTypeProperty.TERMINAL;
  * <tr><td>2410</td><td>NBASET</td></tr>
  * <tr><td>2411</td><td>NBASET_EXECUTE_QUERY</td></tr>
  * <tr><td>2412</td><td>NBASET_INTERNAL</td></tr>
+ * <tr><td>2420</td><td>TIBERO</td></tr>
+ * <tr><td>2421</td><td>TIBERO_EXECUTE_QUERY</td></tr>
  * <tr><td>2450</td><td>INFORMIX</td></tr>
  * <tr><td>2451</td><td>INFORMIX_EXECUTE_QUERY</td></tr>
  * <tr><td>2500</td><td>POSTGRESQL</td></tr>
