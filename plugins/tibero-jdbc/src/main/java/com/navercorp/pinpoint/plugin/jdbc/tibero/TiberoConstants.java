@@ -14,10 +14,8 @@
  */
 package com.navercorp.pinpoint.plugin.jdbc.tibero;
 
-import static com.navercorp.pinpoint.common.trace.ServiceTypeProperty.*;
-
 import com.navercorp.pinpoint.common.trace.ServiceType;
-import com.navercorp.pinpoint.common.trace.ServiceTypeFactory;
+import com.navercorp.pinpoint.common.trace.ServiceTypeProvider;
 
 /**
  * @author freckie
@@ -28,7 +26,7 @@ public final class TiberoConstants {
     }
 
     public static final String TIBERO_SCOPE = "TIBERO_SCOPE";
-    
-    public static final ServiceType TIBERO = ServiceTypeFactory.of(2420, "TIBERO", TERMINAL, INCLUDE_DESTINATION_ID);
-    public static final ServiceType TIBERO_EXECUTE_QUERY = ServiceTypeFactory.of(2421, "TIBERO_EXECUTE_QUERY", "TIBERO", TERMINAL, RECORD_STATISTICS, INCLUDE_DESTINATION_ID);
+
+    public static final ServiceType TIBERO = ServiceTypeProvider.getByCode(2420);
+    public static final ServiceType TIBERO_EXECUTE_QUERY = ServiceTypeProvider.getByCode(2421);
 }

@@ -1,0 +1,14 @@
+serviceTypes:
+  - code: 2420
+    name: 'TIBERO'
+    desc: 'TIBERO'
+    property:
+      terminal: true
+      includeDestinationId: true
+  - code: 2421
+    name: 'TIBERO_EXECUTE_QUERY'
+    desc: 'TIBERO'
+    property:
+      terminal: true
+      recordStatistics: true
+      includeDestinationId: true
